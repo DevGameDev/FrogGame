@@ -4,33 +4,35 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    static int startHealth;
-    int currentHealth { get; set; }
+    static int maxHealth;
+    static int currentHealth; // Set to maxHealth in Start()
     void ApplyDamage(int damage);
+    void kill();
 }
 
 public interface IDamageDealer
 {
     static int startAttack;
-    int currentAttack { get; set; }
-    void DealDamage(int damage);
+    static int currentAttack;
+    void DealDamage(int damage, Unit unit);
 }
 
-public interface IHealer
+public interface IHealer // TODO Remove or find use
 {
-    int startHealing { get; set; };
+    int startHealing { get; set; }
     int currentHealing { get; set; }
     void Heal(int healing);
 }
 
-public class Unit : MonoBehaviour
+abstract public class Unit : MonoBehaviour
 {
     // Basic Unit Info
-    string name;
+    string displayName;
+    bool isEnemy = false;
 
     void Start()
     {
-        Debug.Log($"Start - Unit: {name}")
+        Debug.Log($"Start - Unit: {displayName}");
     }
 
     void Update()
