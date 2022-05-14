@@ -6,6 +6,7 @@ public class MouseControls: MonoBehaviour {
   
   private Renderer renderer;
   public GameObject[] pads;
+  
   void Start() 
   {
     pads = GameObject.FindGameObjectsWithTag("lilypad");
@@ -18,15 +19,24 @@ public class MouseControls: MonoBehaviour {
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
       RaycastHit hit;  
       if (Physics.Raycast(ray, out hit)) {  
-           
-        if (hit.transform.tag == "lilypad") {  
+        print("hit");
+        if (hit.transform.tag == "tile") {  
           foreach (GameObject pad in pads) {
-            renderer = pad.GetComponent<Renderer>();
-            renderer.material.color = Color.green;
+            padColor padcolor = pad.GetComponent<padColor>();
+            padcolor.isSelected = false;
           }
-          renderer = hit.transform.GetComponent<Renderer>();
-          renderer.material.color = Color.red;
-          print("hit");  
+
+          if (hit.transform.childCount > 0)
+                {
+                    foreach (Transform child in hit.transform)
+                    {
+                        if (child.gameObject.tag == "lilypad")
+                        {
+                          padColor padcolor = child.GetComponent<padColor>();
+                          padcolor.isSelected = true;
+                        }
+                    }
+                } 
         } 
       }  
     }  
