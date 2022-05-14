@@ -40,7 +40,10 @@
      <Compile Include="Assets\Scripts\MainMenuUI.cs" />
      <Compile Include="Assets\Scripts\GameOverUI.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
-     <Compile Include="Assets\Scripts\FrogUnit.cs" />
+     <Compile Include="Assets\Scripts\Frog.cs" />
+     <Compile Include="Assets\Scripts\Tadpole.cs" />
+     <Compile Include="Assets\Scripts\FrogEgg.cs" />
+     <Compile Include="Assets\Scripts\Snake.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

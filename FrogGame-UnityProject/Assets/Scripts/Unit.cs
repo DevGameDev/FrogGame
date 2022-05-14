@@ -8,8 +8,9 @@ public class Unit : MonoBehaviour
     string displayName;
     int _health; // Always defined, but no interaction for non-damageable units
     int _attack; // Always defined, but no interaction for non-agressive units
+    // Tile2D tile;
 
-    (int, int)[] movementPatterns
+    (int, int)[] movementPatterns;
 
     public bool isEnemy = false;
 
@@ -25,7 +26,7 @@ public class Unit : MonoBehaviour
 
     void UpdateInfo() 
     {
-        return;
+        //Grid2D grid = Object.FindObjectOfType<GRIDSCRIPTNAME>();
+        //int[] = tile.ReturnPosition();
     }
-
 }

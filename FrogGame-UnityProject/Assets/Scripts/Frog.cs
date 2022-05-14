@@ -5,9 +5,9 @@ using UnitInterfaces;
 
 public class FrogUnit : Unit, IDamageable, IDamageDealer
 {
-    // Basic Unit Definitions
+    // Unit
     static string displayName = "Frog";
-    bool isEnemy;
+    new bool isEnemy;
 
     // IDamageable //
     int maxHealth = 1;
@@ -24,7 +24,6 @@ public class FrogUnit : Unit, IDamageable, IDamageDealer
         // TODO Animation?
         Destroy(gameObject);
     }
-    // End //
 
     // IDamageDealer //
     static int startAttack = 1;
@@ -36,6 +35,8 @@ public class FrogUnit : Unit, IDamageable, IDamageDealer
         IDamageable damageStats = (IDamageable)otherUnit.GetComponent(typeof(IDamageable));
         damageStats.ApplyDamage(damage);
     }
+
+    void 
     // End //
 
     void Start()
