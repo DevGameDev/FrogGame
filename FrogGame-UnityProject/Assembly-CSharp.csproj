@@ -36,6 +36,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\UnitInterfaces.cs" />
+     <Compile Include="Assets\Scripts\MainMenuUI.cs" />
+     <Compile Include="Assets\Scripts\GameOverUI.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\Scripts\FrogUnit.cs" />
     <Reference Include="UnityEngine">

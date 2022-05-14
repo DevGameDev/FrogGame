@@ -1,24 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnitInterfaces;
 
-public class FrogBasic : Unit, IDamageable, IDamageDealer
+public class FrogUnit : Unit, IDamageable, IDamageDealer
 {
     // Basic Unit Definitions
     static string displayName = "Frog";
-    bool isEnemy = false;
+    bool isEnemy;
 
     // IDamageable //
     int maxHealth = 1;
-    int currentHealth;
+    int _health;
 
     public void ApplyDamage(int damage) 
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0) kill();
+        _health -= damage;
+        if (_health <= 0) die();
     }
 
-    public void kill() {Destroy(gameObject);}
+    public void die()
+    {
+        // TODO Animation?
+        Destroy(gameObject);
+    }
     // End //
 
     // IDamageDealer //
@@ -27,17 +32,20 @@ public class FrogBasic : Unit, IDamageable, IDamageDealer
 
     public void DealDamage(int damage, Unit otherUnit) // TODO: Implement
     {
-        if (otherUnit is not IDamageable) Debug.Log($"Unit: {name} failed attack on {otherUnit.name}; not damageable");
+        if (otherUnit is not IDamageable || isEnemy != otherUnit.isEnemy) {Debug.Log($"Unit: {name} failed attack on {otherUnit.name}; not damageable"); return;}
+        IDamageable damageStats = (IDamageable)otherUnit.GetComponent(typeof(IDamageable));
+        damageStats.ApplyDamage(damage);
     }
     // End //
 
     void Start()
     {
-        currentHealth = maxHealth;
+        _health = maxHealth;
+        isEnemy = false;
     }
 
     void Update()
     {
-        Debug.Log($"currentHealth = {currentHealth}");
+        Debug.Log($"currentHealth = {_health}");
     }
 }
