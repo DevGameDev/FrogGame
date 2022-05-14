@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour
     int _health; // Always defined, but no interaction for non-damageable units
     int _attack; // Always defined, but no interaction for non-agressive units
 
-    (int, int)[] movementPatterns
+    (int, int)[] movementPatterns;
 
     public bool isEnemy = false;
 
