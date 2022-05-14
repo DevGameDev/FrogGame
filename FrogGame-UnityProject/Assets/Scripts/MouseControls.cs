@@ -1,12 +1,14 @@
 using System.Collections;  
-using System.Collections.Generic;  
+using System.Collections;  
 using UnityEngine;  
   
 public class MouseControls: MonoBehaviour {  
   
   private Renderer renderer;
+  public GameObject[] pads;
   void Start() 
   {
+    pads = GameObject.FindGameObjectsWithTag("lilypad");
   }  
   
     
@@ -17,33 +19,15 @@ public class MouseControls: MonoBehaviour {
       RaycastHit hit;  
       if (Physics.Raycast(ray, out hit)) {  
            
-        if (hit.transform.name == "snake") {  
-          
+        if (hit.transform.tag == "lilypad") {  
+          foreach (GameObject pad in pads) {
+            renderer = pad.GetComponent<Renderer>();
+            renderer.material.color = Color.green;
+          }
           renderer = hit.transform.GetComponent<Renderer>();
           renderer.material.color = Color.red;
           print("hit");  
         } 
-
-        if (hit.transform.name == "plane") {  
-          
-          renderer = hit.transform.GetComponent<Renderer>();
-          renderer.material.color = Color.blue;
-          print("hit");  
-        } 
-
-        if (hit.transform.name == "Cube") {  
-          
-          renderer = hit.transform.GetComponent<Renderer>();
-          renderer.material.color = Color.yellow;
-          print("hit");  
-        }
-
-        if (hit.transform.name == "wings") {  
-          
-          renderer = hit.transform.GetComponent<Renderer>();
-          renderer.material.color = Color.yellow;
-          print("hit");  
-        }  
       }  
     }  
   }  
