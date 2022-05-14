@@ -19,7 +19,6 @@ public class MouseControls: MonoBehaviour {
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
       RaycastHit hit;  
       if (Physics.Raycast(ray, out hit)) {  
-        print("hit");
         if (hit.transform.tag == "tile") {  
           foreach (GameObject pad in pads) {
             padColor padcolor = pad.GetComponent<padColor>();
