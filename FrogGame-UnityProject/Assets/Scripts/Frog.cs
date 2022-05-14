@@ -36,9 +36,6 @@ public class FrogUnit : Unit, IDamageable, IDamageDealer
         damageStats.ApplyDamage(damage);
     }
 
-    void 
-    // End //
-
     void Start()
     {
         _health = maxHealth;
