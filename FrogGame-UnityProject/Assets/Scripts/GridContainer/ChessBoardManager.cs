@@ -64,6 +64,7 @@ public class ChessBoardManager : MonoBehaviour
 
     public GameObject SelectTile(int x, int y)
     {
+        // ADD A CHECK FOR IF IN GRID RANGE!!!
         return frogChessBoard[x, y];
     }
 
