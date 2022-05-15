@@ -64,8 +64,13 @@ public class ChessBoardManager : MonoBehaviour
 
     public GameObject SelectTile(int x, int y)
     {
-        // ADD A CHECK FOR IF IN GRID RANGE!!!
-        return frogChessBoard[x, y];
+        GameObject returnObject = null;
+        if (0 <= x && x <= length && 0 <= y && y <= width)
+        {
+            returnObject = frogChessBoard[x, y];
+        }
+
+        return returnObject;
     }
 
     public List<GameObject> FindGridChildrenWithTag(string tagName)
@@ -98,9 +103,14 @@ public class ChessBoardManager : MonoBehaviour
     public void EnemyTurn()
     {
         // Look through tiles
-            // Look through children of each tile (make sure children exist)
-            // For each child, if has component Unit AND child.isEnemy == true...
-                // Execute DoEnemyBehavior()
+        // Look through children of each tile (make sure children exist)
+        // For each child, if has component Unit AND child.isEnemy == true...
+        // Execute DoEnemyBehavior()
 
+        List<GameObject> enemies = FindGridChildrenWithTag("enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            // enemy.GetComponent<Enemy>.DoBehavior();
+        }
     }
 }
