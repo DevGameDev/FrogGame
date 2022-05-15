@@ -6,9 +6,9 @@ public class MouseControlsGeneral: MonoBehaviour
 {
   new private Renderer renderer;
 
-  public Tile selectedTile;
-  public Unit selectedUnit;
-  public padColor selectedPad;
+  private Tile selectedTile;
+  private Unit selectedUnit;
+  private padColor selectedPad;
 
   void Update() 
   {  
