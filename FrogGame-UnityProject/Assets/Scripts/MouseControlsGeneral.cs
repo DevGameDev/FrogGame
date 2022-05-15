@@ -7,6 +7,7 @@ public class MouseControlsGeneral: MonoBehaviour {
   new private Renderer renderer;
 
   public Tile selectedTile;
+  public Unit selectedUnit;
   public padColor selectedPad;
 
   void Update() 
@@ -21,12 +22,15 @@ public class MouseControlsGeneral: MonoBehaviour {
       Tile tile = hit.transform.gameObject.GetComponent<Tile>();
       if (!tile) {Reset(); return;}
 
-      if (selectedTile && selectedTile.GetComponent<Unit>().AttemptAction(tile)) {Reset(); return;}
+      if (selectedTile && !selectedUnit.isEnemy && selectedUnit.AttemptAction(tile)) {Reset(); return;}
  
       selectedTile = tile;
+
+      Unit unit = tile.GetComponentInChildren<Unit>();
+      if (unit && unit.isSelectable) selectedUnit = unit;
+
       padColor pad = tile.GetComponentInChildren<padColor>();
-      selectedPad = pad;
-      selectedPad.isSelected = true;
+      if (pad) {selectedPad = pad; pad.isSelected = true;}
     }
   }
 

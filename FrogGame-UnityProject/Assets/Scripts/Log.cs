@@ -10,6 +10,7 @@ public class Log : Unit
         // Set permissions
         displayName = "Log";
         isDamageable = true;
+        isEnemy = true;
         
         // Set Stats
         currentHealth = maxHealth = 1;
