@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class padColor : MonoBehaviour {
-    private Renderer renderer;
+    new private Renderer renderer;
     public bool isSelected = false;
     // Start is called before the first frame update
     void Start()
