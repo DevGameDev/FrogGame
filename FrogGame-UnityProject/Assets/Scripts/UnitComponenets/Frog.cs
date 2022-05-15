@@ -45,7 +45,7 @@ public class FrogUnit : Unit, IDamageable, IDamageDealer
     // IDamageDealer //
     static int startAttack = 1;
 
-    public void DealDamage(int damage, Unit otherUnit) // TODO: Implement
+    public void DealDamage(int damage, Unit otherUnit) 
     {
         if (otherUnit is not IDamageable || isEnemy != otherUnit.isEnemy) {Debug.Log($"Unit: {name} failed attack on {otherUnit.name}; not damageable"); return;}
         IDamageable damageStats = (IDamageable)otherUnit.GetComponent(typeof(IDamageable));
