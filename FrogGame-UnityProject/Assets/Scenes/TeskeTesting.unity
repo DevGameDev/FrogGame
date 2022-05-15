@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   length: 8
   width: 8
-  gridSpaceSize: 1
+  gridSpaceSize: 0.5
   gridCellPrefab: {fileID: 1613896209879278904, guid: eb63ad462eca8fa4a9314865c24918d8, type: 3}
 --- !u!4 &422749139
 Transform:

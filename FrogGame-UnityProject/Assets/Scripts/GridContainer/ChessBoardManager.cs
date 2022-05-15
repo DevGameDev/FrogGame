@@ -37,6 +37,7 @@ public class ChessBoardManager : MonoBehaviour
                 frogChessBoard[x, y] = Instantiate(gridCellPrefab, new Vector3(x * gridSpaceSize, y * gridSpaceSize), Quaternion.identity);
                 frogChessBoard[x, y].GetComponent<Tile>().SetPosition(x, y);
                 frogChessBoard[x, y].transform.parent = transform;
+                frogChessBoard[x, y].transform.gameObject.tag = "tile";
                 frogChessBoard[x, y].gameObject.name = "Tile ( X: " + x.ToString() + " , Y: " + y.ToString() + ")";
             }
         }
