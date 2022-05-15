@@ -15,19 +15,11 @@ namespace UnitInterfaces
     {
         static int startAttack;
         void DealDamage(int damage, Unit unit);
-        // List<Tile2D> GetAttackInfo();
-    }
-
-    public interface IHealer
-    {
-        int startHealing { get; set; }
-        int currentHealing { get; set; }
-        void Heal(int healing);
     }
 
     public interface IMoveable
     {
-        int moveRange { get; set; }
-        // List<Tile2D> GetMoveInfo();
+        static Vector2Int[] movementPatterns;
+        void MoveUnit(Tile newTile);
     }
 }
