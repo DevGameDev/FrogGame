@@ -93,4 +93,14 @@ public class ChessBoardManager : MonoBehaviour
 
         return returnList;
     }
+
+    // Need function to loop through tiles, find all enemies, and ask them to do their behaviors
+    public void EnemyTurn()
+    {
+        // Look through tiles
+            // Look through children of each tile (make sure children exist)
+            // For each child, if has component Unit AND child.isEnemy == true...
+                // Execute DoEnemyBehavior()
+
+    }
 }
