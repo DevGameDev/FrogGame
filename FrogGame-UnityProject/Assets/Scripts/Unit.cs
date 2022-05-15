@@ -16,15 +16,14 @@ namespace UnitLibrary
         [HideInInspector] public bool canAttack = false;
 
         // Board Information
-        protected ChessBoardManager grid; // Grid Grandparent
+        [HideInInspector] public ChessBoardManager grid; // Grid Grandparent
         [HideInInspector] public Tile tile; // Tile Parent
-        protected Vector2Int position; // (int xTilePos, int yTilePos)
 
         // Game Statistics
         protected int maxHealth;
         [HideInInspector] public int currentHealth;
         protected int attack;
-        protected List<Vector2Int> actionPatterns; // Array of Vector2Int -> (int xChange, int yChange) for each move
+        [HideInInspector] public List<Vector2Int> actionPatterns; // Array of Vector2Int -> (int xChange, int yChange) for each move
 
         protected List<Tile> moveableTiles; // List of tiles that could be moved to
         protected List<Tile> attackableTiles; // List of tiles that can be attacked
@@ -34,7 +33,6 @@ namespace UnitLibrary
             gameObject.transform.tag = "Unit";
             grid = FindObjectOfType<ChessBoardManager>();
             tile = gameObject.transform.parent.GetComponent<Tile>();
-            position = tile.GetPosition();
             currentHealth = maxHealth;
             UpdateInfo();
         }
@@ -48,6 +46,7 @@ namespace UnitLibrary
             foreach (Vector2Int pattern in actionPatterns)
             {
                 // Get tile
+                Vector2Int position = tile.GetPosition();
                 Tile otherTile = grid.SelectTile(position.x + pattern[0], position.y + pattern[1]).GetComponent<Tile>();
                 
                 // If the tile is not occupied, can move here
@@ -69,7 +68,7 @@ namespace UnitLibrary
 
         public bool AttemptAction(Tile otherTile) 
         {
-// Get Unit object in new tile
+            // Get Unit object in new tile
             Unit otherUnit = otherTile.transform.GetComponentInChildren<Unit>();
             
             // If the tile is empty and this unit can move, move
