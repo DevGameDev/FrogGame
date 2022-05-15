@@ -7,11 +7,28 @@ public class FrogUnit : Unit, IDamageable, IDamageDealer
 {
     // Unit
     static string displayName = "Frog";
-    new bool isEnemy;
+    new bool isEnemy = false;
+    int _health;
+    int _attack;
+
+    Tile tile;
+
+    new public Vector2Int[] movementPatterns = 
+    {
+        new Vector2Int (-2, 0),
+        new Vector2Int (2, 0),
+        new Vector2Int (0, 2),
+        new Vector2Int (0, -2),
+        new Vector2Int (-1, -1),
+        new Vector2Int (-1, 1),
+        new Vector2Int (1, -1),
+        new Vector2Int (1, 1)
+    };
+    new public List<Tile> moveableTiles;
+    new public List<Tile> attackableTiles;
 
     // IDamageable //
     int maxHealth = 1;
-    int _health;
 
     public void ApplyDamage(int damage) 
     {
@@ -27,7 +44,6 @@ public class FrogUnit : Unit, IDamageable, IDamageDealer
 
     // IDamageDealer //
     static int startAttack = 1;
-    int currentAttack = startAttack;
 
     public void DealDamage(int damage, Unit otherUnit) // TODO: Implement
     {
@@ -36,14 +52,18 @@ public class FrogUnit : Unit, IDamageable, IDamageDealer
         damageStats.ApplyDamage(damage);
     }
 
+    // IMoveable
+    void MoveUnit(Tile tile)
+    {
+        UpdateInfo();
+        
+    }
+
+    // Misc
     void Start()
     {
         _health = maxHealth;
-        isEnemy = false;
-    }
-
-    void Update()
-    {
-        Debug.Log($"currentHealth = {_health}");
+        _attack = startAttack;
+        UpdateInfo();
     }
 }
