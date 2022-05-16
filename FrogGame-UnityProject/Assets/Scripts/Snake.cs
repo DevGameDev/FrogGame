@@ -31,7 +31,10 @@ public class Snake : Unit
         currentHealth = maxHealth = 2;
         attack = 2;
         foreach (Vector2Int pattern in snakeActionPatterns) actionPatterns.Add(pattern);
+    }
 
-        base.Start();
+    protected override void Init()
+    {
+        base.Init();
     }
 }

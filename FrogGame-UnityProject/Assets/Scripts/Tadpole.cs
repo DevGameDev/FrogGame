@@ -30,7 +30,10 @@ public class Tadpole : Unit
         currentHealth = maxHealth = 2;
         attack = 2;
         foreach (Vector2Int pattern in tadpoleActionPatterns) actionPatterns.Add(pattern);
+    }
 
-        base.Start();
+    protected override void Init()
+    {
+        base.Init();
     }
 }

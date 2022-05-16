@@ -30,7 +30,10 @@ public class Frog : Unit
         currentHealth = maxHealth = 3;
         attack = 2;
         foreach (Vector2Int pattern in frogActionPatterns) actionPatterns.Add(pattern);
+    }
 
-        base.Start();
+    protected override void Init()
+    {
+        base.Init();
     }
 }

@@ -31,7 +31,10 @@ public class Turtle : Unit
         currentHealth = maxHealth = 4;
         attack = 2;
         foreach (Vector2Int pattern in turtleActionPatterns) actionPatterns.Add(pattern);
+    }
 
-        base.Start();
+    protected override void Init()
+    {
+        base.Init();
     }
 }

@@ -30,7 +30,11 @@ namespace UnitLibrary
 
         protected virtual void Start()
         {
-            gameObject.transform.tag = "Unit";
+            Init();
+        }
+
+        protected virtual void Init() {
+            gameObject.transform.tag = "unit";
             grid = FindObjectOfType<ChessBoardManager>();
             tile = gameObject.transform.parent.GetComponent<Tile>();
             currentHealth = maxHealth;
@@ -39,6 +43,8 @@ namespace UnitLibrary
 
         protected void UpdateInfo() 
         {
+            ChessBoardManager grid2 = grid;
+            gameObject.transform.position = gameObject.transform.parent.transform.position;
             // Check if any action patterns
             if (actionPatterns.Count == 0) return;
 
@@ -47,7 +53,7 @@ namespace UnitLibrary
             {
                 // Get tile
                 Vector2Int position = tile.GetPosition();
-                Tile otherTile = grid.SelectTile(position.x + pattern[0], position.y + pattern[1]).GetComponent<Tile>();
+                Tile otherTile = grid2.SelectTile(position.x + pattern[0], position.y + pattern[1]).GetComponent<Tile>();
                 
                 // If the tile is not occupied, can move here
                 if (canMove && !otherTile.isOccupied) {moveableTiles.Add(otherTile); break;}
@@ -59,7 +65,7 @@ namespace UnitLibrary
                 // Look for a Unit (grabs first)
                 foreach (GameObject obj in otherTile.tileContents)
                 {
-                    if (obj.CompareTag("Unit")) {unit = obj.GetComponent<Unit>(); break;}
+                    if (obj.CompareTag("unit")) {unit = obj.GetComponent<Unit>(); break;}
                 }
                 // If unit exists, is of opposite team, and can be damaged, can attack here
                 if (canAttack && unit && isEnemy != unit.isEnemy && unit.isDamageable) attackableTiles.Add(otherTile);

@@ -6,9 +6,9 @@ public class MouseControlsGeneral: MonoBehaviour
 {
   new private Renderer renderer;
 
-  private Tile selectedTile;
-  private Unit selectedUnit;
-  private padColor selectedPad;
+  private Tile selectedTile = null;
+  private Unit selectedUnit = null;
+  private padColor selectedPad = null;
 
   void Update() 
   {  
@@ -49,12 +49,14 @@ public class MouseControlsGeneral: MonoBehaviour
           {
             int tileX = tilePos.x + pattern.x;
             int tileY = tilePos.y + pattern.y;
+            if (!grid || (tileX < 0) || (tileX >= grid.width) || (tileY < 0) || (tileY >= grid.length)) continue;
             Tile actionableTile = grid.SelectTile(tileX, tileY).GetComponent<Tile>();
             padColor actionablePad = actionableTile.GetComponentInChildren<padColor>();
             actionablePad.isSelected = true;
           }
         }
       }
+      Debug.Log($"selectedTile = {selectedTile} selectedUnit = {selectedUnit} selectedPad = {selectedPad}");
     }
   }
 

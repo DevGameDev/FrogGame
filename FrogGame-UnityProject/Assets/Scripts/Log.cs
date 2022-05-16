@@ -14,6 +14,10 @@ public class Log : Unit
         
         // Set Stats
         currentHealth = maxHealth = 1;
-        base.Start();
+    }
+
+    protected override void Init()
+    {
+        base.Init();
     }
 }

@@ -31,7 +31,10 @@ public class Fly : Unit
         currentHealth = maxHealth = 1;
         attack = 3;
         foreach (Vector2Int pattern in flyActionPatterns) actionPatterns.Add(pattern);
+    }
 
-        base.Start();
+    protected override void Init()
+    {
+        base.Init();
     }
 }

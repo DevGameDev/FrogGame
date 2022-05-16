@@ -5,8 +5,8 @@ using UnityEngine;
 public class ChessBoardManager : MonoBehaviour
 {
 
-    [SerializeField] private int length;
-    [SerializeField] private int width;
+    [SerializeField] public int length;
+    [SerializeField] public int width;
     [SerializeField] private float gridSpaceSize;
 
     [SerializeField] private GameObject gridCellPrefab;
@@ -16,7 +16,7 @@ public class ChessBoardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateGrid();
+        // CreateGrid();
     }
 
     // Creates the Grid
@@ -34,10 +34,9 @@ public class ChessBoardManager : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 // Create a new Tile object for each cell
-                frogChessBoard[x, y] = Instantiate(gridCellPrefab, new Vector3(x * gridSpaceSize, y * gridSpaceSize, 0), Quaternion.identity);
+                frogChessBoard[x, y] = Instantiate(gridCellPrefab, new Vector3(x * gridSpaceSize, y * gridSpaceSize), Quaternion.identity);
                 frogChessBoard[x, y].GetComponent<Tile>().SetPosition(x, y);
                 frogChessBoard[x, y].transform.parent = transform;
-                frogChessBoard[x, y].transform.localPosition = new Vector3(x * gridSpaceSize, y * gridSpaceSize, 0);
                 frogChessBoard[x, y].transform.gameObject.tag = "tile";
                 frogChessBoard[x, y].gameObject.name = "Tile ( X: " + x.ToString() + " , Y: " + y.ToString() + ")";
             }
